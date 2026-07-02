@@ -1,24 +1,17 @@
-# Macro Voting Timing Model
+# Market Timing Model: Referencing Macroeconomic Factors to predict and time the S&P 500.
 
 A 5-factor macro voting model that switches the S&P 500 timing signal between "invested"
-and "cash" monthly, built to the frozen spec in `report/BUILD_SPEC_v3.md`. Python only —
-no R deliverable.
+and "cash" monthly. 
 
-## What it does, in plain language
+## What the Market Timing Model tries to do: 
 
-Five macro read-outs (growth, inflation, the dollar, the 2-year yield, and risk appetite)
+Five macro read-outs (economic growth, inflation, International Trade in the dollar, the 2-year yield on Treasury Bills follwing the monetary policy, and risk appetite)
 each get turned into a z-score against their own trailing 10-year history, then a vote:
 bullish (+1), bearish (−1), or abstain (0/no-opinion) if the z-score isn't stretched enough
-or the series doesn't have enough history yet. Add the votes up: positive → be in the S&P
+or the series doesn't have enough history yet. 
+Add the votes up: positive → be in the S&P
 500 next month, negative → sit in cash, tied → keep doing whatever you were already doing.
 No fitting, no optimization — every threshold and window is fixed in advance.
-
-## Why it can't run here (this chat's sandbox) but will run in Colab
-
-This code was built and unit-tested against synthetic data in a network-locked sandbox
-(no egress to `fred.stlouisfed.org` or `finance.yahoo.com`). **It has not yet been run
-against real data.** It's written to run cleanly in Google Colab or any normal internet-
-connected environment.
 
 ## Running it
 
